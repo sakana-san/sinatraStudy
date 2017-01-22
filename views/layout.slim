@@ -1,0 +1,19 @@
+doctype 5
+html lang='ja'
+  head
+    meta charset='utf-8'
+    title #{@site_name}
+    script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"
+  body
+    == yield
+  javascript:
+    $('.deleteCmd').on('click', function() {
+      var $el = $(this).parent();
+      if(confirm('削除しますか?')) {
+        $.post('/delete', {
+          id: $el.data('id')
+        }, function() {
+          $el.fadeOut(100);
+        });
+      }
+    });

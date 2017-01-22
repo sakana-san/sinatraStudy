@@ -1,0 +1,12 @@
+
+h1 #{@title}
+ul
+  - @comments.each do |comment|
+    li data-id="#{comment.id}"
+      | #{comment.body}
+      span.deleteCmd style="cursor:pointer;color:blue;"
+        | [x]
+h2 Add New
+form method="post" action="/new"
+  input type="text" name="body"
+  input type="submit" value="!post"
